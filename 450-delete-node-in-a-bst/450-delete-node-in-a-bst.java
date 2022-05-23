@@ -14,44 +14,48 @@
  * }
  */
 class Solution {
-    
-    public int max(TreeNode node){
-        TreeNode curr = node;
+    public int max(TreeNode root)
+    {
+        TreeNode curr =root;
         
-        while(curr.right != null)
-            curr =curr.right;
+        while(curr.right!=null)
+        {
+            curr=curr.right;
+        }
         
         return curr.val;
-    }
-    
-    public TreeNode deleteNode(TreeNode root, int key) {
-            if(root==null)
-                return null;
-
-            if(root.val<key)
-                root.right = deleteNode(root.right , key);
-
-            else if(root.val>key)
-                root.left = deleteNode(root.left , key);
-
-            else
-            {
-                //CASE 0 child and 1 child
-
-                if(root.left==null || root.right==null)
-                    return root.left!=null?root.left:root.right;
-                
-                     //CASE 2 child
-                    int maxEle = max(root.left); // we can also do min of right
-                    root.val = maxEle;
-                    root.left = deleteNode(root.left,maxEle);
-  
-            }
         
-        return root;
+    }
+    public TreeNode deleteNode(TreeNode root, int key) 
+    {
+        if(root==null)
+            return null;
+        
+        if(root.val<key)
+        {
+            root.right = deleteNode(root.right , key);
+        }
+        
+        else if(root.val>key)
+        {
+            root.left = deleteNode(root.left , key);
+        }
+        
+        else
+        {
+            if(root.left==null || root.right == null)
+            {
+               return root.left!=null?root.left:root.right;
+            }
+            
+           
+                int maxEle = max(root.left);
+                root.val=maxEle;
+                root.left=deleteNode(root.left,maxEle);
             
         }
-            
-            
+        
+        return root;
         
     }
+}
