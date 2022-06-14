@@ -13,6 +13,7 @@ class Solution {
                 flag = false;
                 return;
             }
+        
          len=len+1;
  
         for(int d=0 ; d<dir.length ; d++)
@@ -20,8 +21,7 @@ class Solution {
             int row = i + dir[d][0];
             int col = j + dir[d][1];
             
- 
-            if(row >= 0 && col>= 0 && row <= grid.length-1 && col<= grid[0].length-1 && grid[row][col]==1)
+            if(row >= 0 && col>= 0 && row <grid.length&& col<grid[0].length && grid[row][col]==1)
             {
                countEnclaves(grid , row, col); 
             }
