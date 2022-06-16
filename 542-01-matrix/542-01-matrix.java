@@ -16,13 +16,13 @@ class Solution {
         }
     }
     
-    static int [][] dir = {{-1,0} , {1,0}, {0,-1},{0,1} };
+   static int [][] dir = {{-1,0} , {1,0}, {0,-1},{0,1}};
     
 
     public int[][] updateMatrix(int[][] mat) 
     {
         Queue<Pair> qu = new LinkedList();
-        boolean[][] visited = new boolean[mat.length][mat[0].length];
+        
         int [][] result = new int [mat.length][mat[0].length];
         
         for(int i=0 ; i<mat.length ; i++)
@@ -38,10 +38,12 @@ class Solution {
         {
             Pair rem = qu.remove();   //remoove
             
-           if(visited[rem.i][rem.j] == true){
+            if(mat[rem.i][rem.j]==-1)  //mark
+            {
                 continue;
             }
-            visited[rem.i][rem.j] = true;
+            
+            mat[rem.i][rem.j]=-1;
             
             result[rem.i][rem.j]=rem.level; //work
             
@@ -53,7 +55,7 @@ class Solution {
                 
                
                 
-                if(row>=0 && col>=0 && row<mat.length && col<mat[0].length && mat[row][col]==1 && visited[row][col]==false)
+                if(row>=0 && col>=0 && row<mat.length && col<mat[0].length && mat[row][col]==1)
                 {
                     qu.add(new Pair(row , col , rem.level+1));
                 }
