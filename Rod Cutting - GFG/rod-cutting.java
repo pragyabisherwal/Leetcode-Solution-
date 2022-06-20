@@ -26,20 +26,20 @@ class Solution{
     public int cutRod(int price[], int n) {
         int [][] dp = new int [n+1][n+1];
         
-        int [] len = new int[n];
+        // int [] len = new int[n];
         
-        for(int i=0 ; i<n ; i++)
-        {
-            len[i]=i+1;
-        }
+        // for(int i=0 ; i<n ; i++)
+        // {
+        //     len[i]=i+1;
+        // }
 
-        for(int i=1; i<=n;i++)
+        for(int i=1; i<dp.length;i++)
         {
-            for(int j=1;j<=n ; j++)
+            for(int j=1;j<dp[0].length;j++)
             {
-                if(len[i-1]<=j)
+                if(i<=j)
                 {
-                    dp[i][j]=Math.max(dp[i-1][j] , price[i-1]+dp[i][j-len[i-1]]);
+                    dp[i][j]=Math.max(dp[i-1][j] , price[i-1]+dp[i][j-i]);
                 }
                 
                 else
