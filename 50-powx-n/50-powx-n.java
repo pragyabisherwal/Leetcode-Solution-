@@ -2,7 +2,7 @@ class Solution {
     public double myPow(double x, int n) 
     {
         double ans = 1.0;
-        long nn = n;
+        long nn = n;  // if negative n so keep long
         
          if(nn<0)
         {
