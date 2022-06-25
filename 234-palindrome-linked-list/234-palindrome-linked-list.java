@@ -80,9 +80,6 @@ class Solution {
             c2=c2.next;
         }
         
-        nhead=reverse(nhead);
-        mid.next=nhead;
-   
         return res;
         
     }
