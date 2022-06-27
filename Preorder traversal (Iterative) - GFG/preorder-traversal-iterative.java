@@ -113,8 +113,7 @@ class Tree
     // Return a list containing the inorder traversal of the given tree
     ArrayList<Integer> preOrder(Node root)
     {
-         ArrayList <Integer> al = new ArrayList<> ();
-        
+        ArrayList<Integer> al = new ArrayList<> ();
         Node curr = root;
         
         while(curr!=null)
@@ -122,7 +121,7 @@ class Tree
             if(curr.left==null)
             {
                 al.add(curr.data);
-                curr=curr.right;
+                curr = curr.right;
             }
             
             else
