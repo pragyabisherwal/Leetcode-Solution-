@@ -115,43 +115,44 @@ class Solution
     // Return a list containing the inorder traversal of the given tree
     ArrayList<Integer> inOrder(Node root)
     {
-        ArrayList <Integer> al = new ArrayList<> ();
-        
-        Node curr = root;
-        
-        while(curr!=null)
-        {
-            if(curr.left==null)
-            {
-                al.add(curr.data);
-                curr=curr.right;
-            }
+       ArrayList<Integer> al = new ArrayList<> ();
+       Node curr = root;
+       
+       while(curr!=null)
+       {
+           if(curr.left==null)
+           {
+               al.add(curr.data);
+               curr=curr.right;
+           }
+           
+           else
+           {
             
-            else
-            {
-                Node iop = curr.left;
-                
-                while(iop.right!=null && iop.right!=curr)
-                {
-                    iop=iop.right;
-                }
-                
-                if(iop.right==null)
-                {
-                    iop.right=curr;
-                    curr=curr.left;
-                }
-                
-                else
-                {
-                    iop.right=null;
-                    al.add(curr.data);
-                    curr=curr.right;
-                }
-            }
-        }
-        
-        return al;
+            Node iop = curr.left;
+           
+           while(iop.right!=null && iop.right!=curr)
+           {
+               iop=iop.right;
+           }
+           
+           if(iop.right==null)   // Not visited the left side
+           {
+               iop.right=curr;
+               curr=curr.left;
+           }
+           
+           else                  //Visited the left side 
+           {
+               iop.right=null;
+               al.add(curr.data);
+               curr=curr.right;
+           }
+           }
+           
+       }
+       
+       return al;
     }
     
     
