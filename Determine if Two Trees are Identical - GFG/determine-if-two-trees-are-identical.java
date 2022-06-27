@@ -129,9 +129,11 @@ class Node{
 
 class Solution
 {
-    boolean helper(Node root1, Node root2)
-    {
-        if(root1==null && root2==null)
+
+	boolean isIdentical(Node root1, Node root2)
+	{
+	 
+	    if(root1==null && root2==null)
          return true;
          
         if(root1!=null && root2==null)
@@ -143,18 +145,12 @@ class Solution
         if(root1.data != root2.data)
          return false;
         
-        boolean lft = helper(root1.left , root2.left);
-        boolean rgt = helper(root1.right , root2.right);
+        boolean lft = isIdentical(root1.left , root2.left);
+        boolean rgt = isIdentical(root1.right , root2.right);
         
         boolean ans = lft && rgt;
         
         return ans;
-        
-    }
-	boolean isIdentical(Node root1, Node root2)
-	{
-	 
-	    return helper(root1 , root2);
 	}
 	
 }
