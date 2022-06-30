@@ -20,7 +20,6 @@ class Solution {
         
         while(l1!=null || l2!=null || carry!=0)
         {
-            ListNode temp=null;
             
             int val1=0;
             if(l1!=null)
@@ -36,16 +35,16 @@ class Solution {
             int digit=sum%10;
             // System.out.println(digit);
             
+             ListNode temp = new ListNode(digit);
+            
             if(ansHead==null)
             {
-                temp = new ListNode(digit);
                 ansHead=temp;
                 ansTail=temp;
             }
             
             else
                {  
-                temp = new ListNode(digit);
                 ansTail.next=temp;
                 ansTail=ansTail.next;
                }
