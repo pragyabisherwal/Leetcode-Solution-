@@ -38,22 +38,22 @@ class Solution {
         result.add(ans);
         }
         
-        for(int col=0 ; col<board[0].length ; col++)
+        for(int col=0 ; col<n; col++)
         {
             
-            if(cols[col]==false && ndiag[row+col]==false && rdiag[row - col + board[0].length-1]==false)
+            if(cols[col]==false && ndiag[row+col]==false && rdiag[row - col + n-1]==false)
             {
                 board[row][col]=true;
                 cols[col]=true;
                 ndiag[row+col]=true;
-                rdiag[row - col + board[0].length-1]=true;
+                rdiag[row - col +n-1]=true;
                 
                 solve(row+1 , cols , ndiag , rdiag , board , n);
                     
                 board[row][col]=false;
                 cols[col]=false;
                 ndiag[row+col]=false;
-                rdiag[row - col + board[0].length-1]=false;
+                rdiag[row - col +n-1]=false;
                 
                 
             }
