@@ -39,7 +39,7 @@ class Solution {
     
     public static void helper(int[][] m,int sr , int sc , int dr , int dc , String psf , ArrayList<String> st , int vis[][])
     {
-        if(sr==dr-1 && sc==dc-1)
+        if(sr==dr && sc==dc)
          {
             st.add(psf);
             return;
@@ -50,7 +50,7 @@ class Solution {
             int row = sr + dir[d][0];
             int col = sc + dir[d][1];
           
-            if(row>=0 && col>=0 && row<dr && col<dc && m[row][col]==1 && vis[row][col]==0)
+            if(row>=0 && col>=0 && row<=dr && col<=dc && m[row][col]==1 && vis[row][col]==0)
             {
                 vis[sr][sc]=1;
                 helper(m , row , col , dr , dc , psf+dirN[d] , st , vis);
@@ -65,14 +65,14 @@ class Solution {
        
        int vis[][] = new int[n][n];
        
-        for(int i = 0;i<n;i++) {
-            for(int j = 0;j<n;j++) {
-                vis[i][j] = 0; 
-            }
-        }
+        // for(int i = 0;i<n;i++) {
+        //     for(int j = 0;j<n;j++) {
+        //         vis[i][j] = 0; 
+        //     }
+        // }
        
        if(m[0][0]==1)
-        helper(m , 0 , 0 , n , n , "" , st , vis);
+        helper(m , 0 , 0 , n-1, n-1, "" , st , vis);
         
        return st;
     }
