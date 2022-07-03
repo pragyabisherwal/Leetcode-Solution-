@@ -33,29 +33,25 @@ class GFG {
 
 class Solution {
     
-    public boolean cyclicGraph(int src ,boolean [] vis , ArrayList<ArrayList<Integer>> adj)
+    public boolean cyclicGraphDFS(int src ,int parent , boolean [] vis , ArrayList<ArrayList<Integer>> adj)
     {
-        Queue<Integer> qu = new LinkedList <> ();
-        qu.add(src);
-        
-        while(qu.size()!=0)
-        {  
-            int parent = qu.remove();
-            
-            if(vis[parent])  
-            { 
-               return true;
-            }
-            
-            vis[parent]=true;
-                
-            for(int nbr : adj.get(parent))
+        vis[src]=true;
+    
+        for(int nbr : adj.get(src))
+        {
+            if(vis[nbr]==false)
             {
-                if(vis[nbr]==false)
-                    qu.add(nbr);
+                if(cyclicGraphDFS(nbr , src , vis , adj))
+                   return true;
             }
+            
+            else if(parent != nbr)
+            {
+                return true;
+            }
+               
         }
-        
+
         return false;
     }
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj)
@@ -66,7 +62,7 @@ class Solution {
         {
             if(!vis[i])
             {
-                if(cyclicGraph(i , vis , adj))
+                if(cyclicGraphDFS(i , -1 , vis , adj))
                    return true;
             }
         }
