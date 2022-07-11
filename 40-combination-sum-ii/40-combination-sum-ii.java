@@ -23,7 +23,7 @@ class Solution {
         
         for(int i=src ; i<candidates.length ; i++)
         {
-            if(i!=src && candidates[i]==candidates[i-1])
+            if(i>src && candidates[i]==candidates[i-1])
                 continue;
             
             temp.add(candidates[i]);
