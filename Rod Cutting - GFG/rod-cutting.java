@@ -1,6 +1,5 @@
 // { Driver Code Starts
 
-
 import java.io.*;
 import java.util.*;
 
@@ -24,31 +23,35 @@ class RodCutting {
 
 class Solution{
     public int cutRod(int price[], int n) {
-        int [][] dp = new int [n+1][n+1];
+        int [] length = new int[n];
         
-        // int [] len = new int[n];
-        
-        // for(int i=0 ; i<n ; i++)
-        // {
-        //     len[i]=i+1;
-        // }
-
-        for(int i=1; i<dp.length;i++)
+        int len =1;
+        for(int i=0;i<n ; i++)
         {
-            for(int j=1;j<dp[0].length;j++)
+            length[i]=len;
+            len++;
+        }
+        
+        int [][] dp = new int[n+1][n+1];
+        
+        for(int i=0 ; i<dp.length ; i++)
+        {
+            for(int j=0 ; j<dp[0].length ; j++)
             {
-                if(i<=j)
-                {
-                    dp[i][j]=Math.max(dp[i-1][j] , price[i-1]+dp[i][j-i]);
-                }
+                if(j==0 || i==0)
+                  dp[i][j]=0;
                 
+                else if(j<length[i-1])
+                {
+                    dp[i][j]=dp[i-1][j];
+                }
                 else
                 {
-                  dp[i][j]=  dp[i-1][j];
+                    dp[i][j]=Math.max(price[i-1]+dp[i][j-length[i-1]],dp[i-1][j]);
                 }
             }
         }
         
-        return dp[dp.length-1][dp[0].length-1];
+        return dp[n][n];
     }
 }
