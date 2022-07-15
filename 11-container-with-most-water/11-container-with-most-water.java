@@ -8,10 +8,10 @@ class Solution {
         
         while(i<j)
         {
-            int ht = Math.min(height[i] , height[j]);
+            int area = Math.min(height[i] , height[j]);
             int width = j-i;
             
-            int water = ht*width;
+            int water = area*width;
             
             if(water>maxWater)
                 maxWater=water;
