@@ -33,9 +33,8 @@ class Solution {
             int sum = val1+ val2+carry;
  
             int digit=sum%10;
-            // System.out.println(digit);
             
-             ListNode temp = new ListNode(digit);
+            ListNode temp = new ListNode(digit);
             
             if(ansHead==null)
             {
@@ -46,7 +45,7 @@ class Solution {
             else
                {  
                 ansTail.next=temp;
-                ansTail=ansTail.next;
+                ansTail=temp;
                }
             
             carry=sum/10;  
