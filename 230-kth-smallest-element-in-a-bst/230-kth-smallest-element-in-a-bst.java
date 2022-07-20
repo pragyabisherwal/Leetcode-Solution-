@@ -30,6 +30,8 @@ class Solution
             kSmall=root.val;
             return;
            }
+        else if(count>k)
+             return;
 
         find(root.right , k);
     }
