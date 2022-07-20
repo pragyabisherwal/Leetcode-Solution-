@@ -26,7 +26,10 @@ class Solution
         
         count++;
         if(count==k)
+           { 
             kSmall=root.val;
+            return;
+           }
 
         find(root.right , k);
     }
