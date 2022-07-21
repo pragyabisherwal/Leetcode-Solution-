@@ -15,10 +15,10 @@ class LRUCache
         }
     }
     
-    private HashMap <Integer , Node> hm = new HashMap<> ();
-    private Node head;
-    private Node tail;
-    private int capacity;
+   HashMap <Integer , Node> hm = new HashMap<> ();
+    Node head;
+   Node tail;
+   int capacity;
     
     public LRUCache(int capacity) 
     {
