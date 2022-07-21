@@ -1,26 +1,37 @@
 class Solution {
-    public int missingNumber(int[] nums) 
-    {
-        HashMap <Integer , Integer> hm = new HashMap<> ();
+   
+     public int missingNumber(int[] nums) 
+     {
+//         HashMap <Integer , Integer> hm = new HashMap<> ();
         
-        for(int i=0 ; i<nums.length ; i++)
-        {
-           hm.put(nums[i] , 1);
-        }
+//         for(int i=0 ; i<nums.length ; i++)
+//         {
+//            hm.put(nums[i] , 1);
+//         }
         
         
-        int result=nums.length;
+//         int result=nums.length;
         
-         for(int i=0 ; i<nums.length ; i++)
-        {
-           if(hm.containsKey(i)==false)
-               result=i;
-        }
+//          for(int i=0 ; i<nums.length ; i++)
+//         {
+//            if(hm.containsKey(i)==false)
+//                result=i;
+//         }
         
 
-        return result;
+//         return result;
+        
+      int lim = nums.length;
+      int sumt=lim*(lim+1)/2;
         
         
-        
+        int sumo=0;
+        for(int i=0;i<lim;i++){
+            sumo+=nums[i];
+        }
+        return sumt-sumo;
     }
+        
+        
+    
 }
