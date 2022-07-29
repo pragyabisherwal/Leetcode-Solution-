@@ -29,16 +29,6 @@ class Solution {
 	} 
     public int findTargetSumWays(int[] nums, int target) 
     {
-        if(nums.length==1)
-        {
-            if(Math.abs(nums[0])==Math.abs(target))
-                return 1;
-            
-            else
-                return 0;
-        }
-        
-        // To count the number of zeroes
         int zero = 0;
         int range=0;
 
