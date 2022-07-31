@@ -24,16 +24,11 @@ class Solution {
             return ans;
         }
         
-        if(p==null && q!=null || p!=null && q==null)
+        if(p==null && q!=null || p!=null && q==null || p.val!=q.val)
         {
             return ans;
         }
         
-        if(p.val!=q.val)
-        {
-            return ans;
-        }
-            
         boolean left=helper(p.left , q.left);
         boolean right=helper(p.right , q.right);
         
