@@ -19,12 +19,9 @@ class Solution {
          if(left==null && right==null)
              return true;
          
-         else if(left==null && right!=null || left!=null && right==null)
+         else if(left==null && right!=null || left!=null && right==null || left.val != right.val)
              return false;
-         
-         if(left.val != right.val)
-             return false;
-         
+       
          boolean leftAns=symmetricHelper(left.left , right.right);
          boolean rightAns=symmetricHelper(left.right , right.left);
          
