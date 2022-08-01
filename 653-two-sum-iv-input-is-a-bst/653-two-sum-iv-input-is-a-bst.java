@@ -27,7 +27,8 @@ class Solution {
         
         else
             return true;
-}
+   }
+    
     boolean flag=false;
     public void targetSum(TreeNode root,TreeNode node,int k)
     {
@@ -37,6 +38,7 @@ class Solution {
         targetSum(root , node.left , k);
         
         int delta = k-node.val;
+        
         if(node.val<delta)
         {
             if(find(root,delta))
