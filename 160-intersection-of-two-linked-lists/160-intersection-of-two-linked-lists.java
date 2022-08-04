@@ -21,6 +21,6 @@ public class Solution {
             if(tempB == null) tempB = headA;
             else tempB = tempB.next;
         }
-        return tempA;  
+        return tempB;  
     }
 }
