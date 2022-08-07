@@ -2,20 +2,20 @@ class Solution {
     
     List<List<Integer>> li = new ArrayList<> ();
     
-    public void solve(int src ,int target, List<Integer> temp ,  List<List<Integer>> li , int[] candidates)
+    public void solve(int src ,int target, List<Integer> temp ,int[] candidates)
     {
         if(target==0)
         {
             li.add(new ArrayList(temp));
         }
         
-        if(target<0)
+        if(target<0 || src>=candidates.length)
             return;
         
         for(int i=src; i<candidates.length; i++)
         {
             temp.add(candidates[i]);
-            solve(i,target-candidates[i], temp ,li,candidates);
+            solve(i,target-candidates[i], temp,candidates);
             temp.remove(temp.size()-1);
         }
         
@@ -25,7 +25,7 @@ class Solution {
     {
       
         List<Integer> temp = new ArrayList<> ();
-        solve(0,target ,temp,li,candidates);
+        solve(0,target ,temp,candidates);
         return li;
         
     }
