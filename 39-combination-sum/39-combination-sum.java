@@ -1,4 +1,7 @@
 class Solution {
+    
+    List<List<Integer>> li = new ArrayList<> ();
+    
     public void solve(int src ,int target, List<Integer> temp ,  List<List<Integer>> li , int[] candidates)
     {
         if(target==0)
@@ -17,11 +20,11 @@ class Solution {
         }
         
     }
+    
     public List<List<Integer>> combinationSum(int[] candidates, int target) 
     {
-        List<List<Integer>> li = new ArrayList<> ();
+      
         List<Integer> temp = new ArrayList<> ();
-        
         solve(0,target ,temp,li,candidates);
         return li;
         
