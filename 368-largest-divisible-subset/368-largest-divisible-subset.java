@@ -2,15 +2,17 @@ class Solution {
     public List<Integer> largestDivisibleSubset(int[] nums) 
     {
         ArrayList<Integer> al = new ArrayList<>();
+        
+        //STEP-1  SORTING
         Arrays.sort(nums);
         int n = nums.length;
         if(n==0)
             return al;
        
         
+        //STEP-2 APPLYING DP AND FINDING THE MAXIMUM LENGTH 
         int [] dp = new int[n];
         Arrays.fill(dp , 1);
-        
         
         int max = 1;
         
@@ -30,6 +32,8 @@ class Solution {
         }
         
         //System.out.println(max);
+        
+        //STEP-3 USING THE MAX LENGTH FINDING THE SUBSET
         int prev = -1;
         
         for(int i=n-1; i>=0 ; i--)
