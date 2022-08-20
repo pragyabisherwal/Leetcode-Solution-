@@ -7,12 +7,9 @@ class Solution {
         if(temp.size() == nums.length)
         {
             al.add(new ArrayList<> (temp)); 
+            return;
         }
-        
-        else
-            
-        {
-            for(int i=0 ; i<nums.length ; i++)
+         for(int i=0 ; i<nums.length ; i++)
             {
                 int myNum=nums[i];
 
@@ -26,8 +23,7 @@ class Solution {
                 }
                 
             }
-        }
-       
+     
     }
     
     public List<List<Integer>> permute(int[] nums) 
