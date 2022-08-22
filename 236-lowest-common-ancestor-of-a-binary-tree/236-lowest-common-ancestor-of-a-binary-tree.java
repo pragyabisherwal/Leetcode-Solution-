@@ -8,8 +8,8 @@
  * }
  */
 class Solution {
-    private boolean n1flag;
-    private boolean n2flag;
+    private boolean n1flag=false;
+    private boolean n2flag=false;
     
     
     public TreeNode helper(TreeNode root, TreeNode p, TreeNode q)
@@ -48,10 +48,7 @@ class Solution {
     {
         if(root==null)
             return null;
-        
-        n1flag=false;
-        n2flag=false;
-        
+       
         TreeNode lca=helper(root , p , q);
         
         if(n1flag==true && n2flag==true)
