@@ -14,12 +14,10 @@ class Solution {
                     else if(i==0)
                         dp[i][j]=false;
                     
-                    else
-                    {
-                        if(dp[i-1][j])
+                    else if(dp[i-1][j])
                             dp[i][j]=true;
                         
-                        else
+                    else
                         {
                             if(j>=nums[i-1])
                             {
@@ -32,7 +30,7 @@ class Solution {
                             }
                         }
                             
-                    }
+                    
                 }
             }
         
