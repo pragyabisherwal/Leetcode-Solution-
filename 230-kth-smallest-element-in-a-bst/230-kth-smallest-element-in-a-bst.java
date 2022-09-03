@@ -25,13 +25,15 @@ class Solution
         find(root.left , k);
         
         count++;
+        
         if(count==k)
-           { 
+        { 
             kSmall=root.val;
             return;
-           }
-        else if(count>k)
-             return;
+        }
+        
+        // else if(count>k)
+        //      return;
 
         find(root.right , k);
     }
