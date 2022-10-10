@@ -7,10 +7,12 @@ class Solution {
         }
         int rabbit =  0;
         
-        for(int i=0;i<1000;i++){
-            int grp  = i+1;
-            int c =  map[i];
-            int count = (int) Math.ceil( (c*1.0)/grp ) * grp;
+        for(int i=0;i<1000;i++)
+        {
+            int grpSize  = i+1;
+            int rabbitsInGrp=  map[i];
+            
+            int count = (int) Math.ceil( (rabbitsInGrp*1.0)/grpSize ) * grpSize;
             rabbit+= count;            
         }
         return rabbit;
