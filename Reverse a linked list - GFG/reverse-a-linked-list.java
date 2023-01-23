@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.*;
 import java.io.*;
 
@@ -47,7 +47,8 @@ class GFG{
         }
     } 
 } 
-   // } Driver Code Ends
+   
+// } Driver Code Ends
 
 
 //function Template for Java
@@ -73,16 +74,17 @@ class Solution
         Node forw=head;
         Node prev=null;
         
+        
         while(curr!=null)
         {
-            // 1-> 2 -> 3 -> 4 -> 5 
             forw=curr.next;
             curr.next=prev;
             
             prev=curr;
             curr=forw;
+            
         }
         
-        return  prev;
+        return prev;
     }
 }
