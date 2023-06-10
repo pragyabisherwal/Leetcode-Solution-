@@ -17,8 +17,8 @@ class Solution {
         {
             int rem = n%10;
             
-            if(num >Integer.MAX_VALUE/10 || num < Integer.MIN_VALUE/10)
-                return false;
+//             if(num >Integer.MAX_VALUE/10 || num < Integer.MIN_VALUE/10)
+//                 return false;
             
             num = num*10 + rem;
             n=n/10;
