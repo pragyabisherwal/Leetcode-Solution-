@@ -4,10 +4,7 @@ class Solution {
         if(x==0)
             return true;
         
-        if(x<0)
-            return false;
-        
-        if(x%10==0)
+        if(x<0 || (x%10==0))
             return false;
         
         int n = x;
@@ -16,10 +13,6 @@ class Solution {
         while(n!=0)
         {
             int rem = n%10;
-            
-//             if(num >Integer.MAX_VALUE/10 || num < Integer.MIN_VALUE/10)
-//                 return false;
-            
             num = num*10 + rem;
             n=n/10;
         }
