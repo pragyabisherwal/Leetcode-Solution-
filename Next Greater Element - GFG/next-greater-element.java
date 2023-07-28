@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 /*package whatever //do not write package name here */
 
 import java.util.*;
@@ -9,17 +9,20 @@ class GFG {
     
 	public static void main (String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter ot = new PrintWriter(System.out);
 		int t = Integer.parseInt(br.readLine().trim());
 		while(t-->0){
 		    int n = Integer.parseInt(br.readLine().trim());
 		    String inputLine[] = br.readLine().trim().split(" ");
 		    long[] arr = new long[n];
 		    for(int i=0; i<n; i++)arr[i]=Long.parseLong(inputLine[i]);
-		    long[] res = new Solution().nextLargerElement(arr, n);
+		    Solution ob = new Solution();
+		    long[] res = ob.nextLargerElement(arr, n);
 		    for (int i = 0; i < n; i++) 
-		        System.out.print(res[i] + " ");
-		    System.out.println();
+		        ot.print(res[i] + " ");
+		    ot.println();
 		}
+        ot.close();
 	}
 }
 
@@ -28,31 +31,28 @@ class GFG {
 // } Driver Code Ends
 
 
-class Solution
-{
-    //Function to find the next greater element for each element of the array.
-    public static long[] nextLargerElement(long[] arr, int n)
+// User Function Template for JAVA
+
+class Solution{
+    public static long[] nextLargerElement(long[] arr, int n) 
     { 
-        long [] result = new long[n];
-        Arrays.fill(result , -1);
-        
-        
-        Stack <Integer> st = new Stack <> ();
-        
-        ////   5 4    12 18
-        
-        for(int i=0 ; i<n ; i++)
-        {
-            while(st.size()!=0 && arr[st.peek()]<arr[i])
-            {
-               // System.out.println(arr[i]);
-                result[st.peek()]=arr[i];
-                st.pop();
-            }
-            
-            st.push(i);
-        }
-        
-        return result;
+       long [] nge = new long[n];
+       Arrays.fill(nge , -1);
+       
+       Stack<Integer> st = new Stack<>();
+       st.push(n-1);
+       
+       for(int i = n-2 ; i>=0 ; i--)
+       {
+           while(st.size()>0 && arr[st.peek()]<=arr[i])
+            st.pop();
+           
+           if(st.size()>0 && arr[st.peek()]>arr[i])
+            nge[i] = arr[st.peek()];
+           
+           st.push(i);
+       }
+       
+       return nge;
     } 
 }
