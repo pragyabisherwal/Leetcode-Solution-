@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for Java
 
 import java.math.*;
@@ -50,9 +50,10 @@ class Driverclass
 		    out.println(new Solution().findLongestConseqSubseq(a, n));
 		    t--;
 		}
-		out.flush();
+		out.close();
 	}
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -65,36 +66,28 @@ class Solution
     //Function to return length of longest subsequence of consecutive integers.
 	static int findLongestConseqSubseq(int arr[], int N)
 	{
-	   HashMap<Integer,Boolean>hm = new HashMap<>();
+	   Set<Integer> set = new HashSet<>();
+	   int max = Integer.MIN_VALUE;
 	   
-	   for(int val : arr)
+	   for(int num : arr)
+	    set.add(num);
+	    
+	   for(int num : arr)
 	   {
-	       hm.put(val,true);
-	   }
-	   
-	    for(int val : arr)
-	   {
-	        if(hm.containsKey(val-1))
-	         hm.put(val,false);
-	   }
-
-	   int max=0;
-	   
-	    for(int val : arr)
-	   {
-	         int idx=1;
-	       if(hm.get(val)==true)
+	       if(!set.contains(num-1))
 	       {
-    	       while(hm.containsKey(val+idx))
-    	         idx++;
-
+	           int count=0;
+	           int val = num;
+	           while(set.contains(val))
+	           {
+	               count++;
+	               val++;
+	           }
+	           
+	           max = Math.max(max , count);
 	       }
-	       
-	       if(idx>max)
-    	        max=idx;
 	   }
 	   
 	   return max;
-	   
 	}
 }
