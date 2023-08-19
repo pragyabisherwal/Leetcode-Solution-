@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 //Initial Template for JAVA
 
 import java.util.LinkedList; 
@@ -105,7 +105,8 @@ public class Tree {
                 t--;   
         }
     }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 //User function Template for Java
@@ -125,65 +126,56 @@ class Node{
 
 class Solution
 {
-   public static class pair
-   {
-      Node node;
-      int level;
-      
-      pair()
-      {
-          
-      }
-      
-      pair(Node node , int level)
-      {
-          this.node=node;
-          this.level=level;
-      }
-      
-   }
-   
+    public static class pair{
+        Node node;
+        int level;
+        
+        pair(Node node , int level)
+        {
+            this.node = node;
+            this.level = level;
+        }
+    } 
     static ArrayList<Integer> topView(Node root)
     {
-       ArrayList<Integer> ans = new ArrayList<> ();
+       ArrayList<Integer> al = new ArrayList<>();
        
        if(root==null)
-       return ans;
+       return al;
        
-       Queue<pair> qu = new LinkedList<pair>();
-       Map <Integer , Integer> hm = new TreeMap<> ();
+       Map<Integer , Integer> hm = new TreeMap<>();
+       Queue<pair> qu = new LinkedList<>();
        
-       
-       pair first = new pair(root , 0);
-       qu.add(first);
+       pair First = new pair(root , 0);
+       qu.add(First);
        
        while(qu.size()!=0)
        {
-         pair rem = qu.remove();
-         
-         if(hm.get(rem.level)==null)
-         {
-             hm.put( rem.level , rem.node.data);
-         }
+           pair rem = qu.remove();
            
-           if(rem.node.left!=null)
-           qu.add(new pair(rem.node.left , rem.level-1));
+           if(hm.containsKey(rem.level)==false)
+           {
+               hm.put(rem.level , rem.node.data);
+           }
            
-            if(rem.node.right!=null)
-             qu.add(new pair(rem.node.right , rem.level+1));
-         
-         
-         
+           if(rem.node.left != null)
+           {
+               pair second = new pair(rem.node.left , rem.level-1);
+               qu.add(second);
+           }
+           
+           if(rem.node.right != null)
+           {
+              pair third = new pair(rem.node.right , rem.level+1);
+              qu.add(third); 
+           }
+           
        }
        
        for(Map.Entry<Integer , Integer> entry : hm.entrySet())
-       {
-           ans.add(entry.getValue());
-       }
-       
-       return ans;
-       
-       
+          al.add(entry.getValue());
+          
+        return al;
         
     }
 }
