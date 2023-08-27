@@ -40,9 +40,9 @@ class Solution {
     static int [][] dir = { {1 , 0} ,  {0 , -1} ,  {0 , 1} , {-1 , 0} };
     static String [] dirN = {"D" , "L" , "R", "U"};
     
-    public static void helper(int[][] m,int sr , int sc , int dr , int dc , String psf , ArrayList<String> st)
+    public static void helper(int[][] m,int sr , int sc , int n , String psf , ArrayList<String> st)
     {
-        if(sr==dr && sc==dc)
+        if(sr==n-1 && sc==n-1)
          {
             st.add(psf);
             return;
@@ -53,10 +53,10 @@ class Solution {
             int row = sr + dir[d][0];
             int col = sc + dir[d][1];
           
-            if(row>=0 && col>=0 && row<=dr && col<=dc && m[row][col]==1 )
+            if(row>=0 && col>=0 && row<n && col<n && m[row][col]==1 )
             {
                 m[sr][sc]=0;
-                helper(m , row , col , dr , dc , psf+dirN[d] , st );
+                helper(m , row , col ,n, psf+dirN[d] , st );
                 m[sr][sc]=1;
             }
         }
@@ -65,10 +65,9 @@ class Solution {
     public static ArrayList<String> findPath(int[][] m, int n) 
     {
        ArrayList<String> st = new ArrayList <> ();
-       //int vis[][] = new int[n][n];
-       
+      
        if(m[0][0]==1)
-        helper(m , 0 , 0 , n-1, n-1, "" , st );
+        helper(m , 0 , 0 , n , "" , st );
         
        return st;
     }
