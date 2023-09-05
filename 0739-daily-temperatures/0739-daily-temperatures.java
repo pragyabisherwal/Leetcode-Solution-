@@ -1,22 +1,23 @@
 class Solution {
-    public int[] dailyTemperatures(int[] temperatures) 
-    {
-        int n = temperatures.length;
+    public int[] dailyTemperatures(int[] temperatures) {
+        //Approach: Using Stack, T.C: O(n), S.C: O(n)
+        int[] ans = new int[temperatures.length];
+
+        //initialize the stack
         Stack<Integer> st = new Stack<>();
-        int [] result = new int[n];
-        
-        for(int i=0 ; i<n ; i++)
-        {
-            int num = temperatures[i];
-            
-            while(!st.isEmpty() && temperatures[st.peek()]<num)
-            {
-                result[st.peek()]=i-st.peek();
-                st.pop();
-            }
-            st.push(i);
+
+        //traverse
+        for(int currDay = 0;currDay<temperatures.length;currDay++){
+            /*while stack is not become empty and while we didn't found
+            a lower temperature*/
+            while(!st.isEmpty() &&
+             temperatures[currDay]>temperatures[st.peek()]){
+                 int prevDay = st.pop();
+                 ans[prevDay] = currDay-prevDay;
+             }
+             //add to stack
+             st.add(currDay);
         }
-        
-        return result;
+        return ans;
     }
 }
