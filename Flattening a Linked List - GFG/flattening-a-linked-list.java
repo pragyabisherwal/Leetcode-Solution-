@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 import java.util.Scanner;
 import java.util.*;
 import java.io.*;
@@ -96,7 +96,8 @@ class Flatttening_A_LinkedList
 		t--;
 		}
 	}	
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 /*Node class  used in the program
@@ -117,11 +118,10 @@ class Node
 /*  Function which returns the  root of 
     the flattened linked list. */
 class GfG
-{
-    Node mergeList(Node a , Node b)
+{   Node merge(Node a , Node b)
     {
-        Node temp = new Node(0);
-        Node res = temp;
+        Node res = new Node(0);
+        Node temp = res;
         
         while(a!=null && b!=null)
         {
@@ -129,35 +129,34 @@ class GfG
             {
                 temp.bottom=a;
                 a=a.bottom;
-                temp=temp.bottom;
+                temp = temp.bottom;
             }
             
             else
             {
-                temp.bottom = b;
+                temp.bottom=b;
                 b=b.bottom;
-                temp=temp.bottom;
+                temp = temp.bottom;
             }
         }
         
         if(a!=null)
-        temp.bottom=a;
-        
-        else
-        temp.bottom=b;
+         temp.bottom=a;
+         
+        if(b!=null)
+         temp.bottom=b;
         
         return res.bottom;
         
     }
     Node flatten(Node root)
     {
-       if(root==null || root.next==null)
-       return root;
-       
-       root.next = flatten(root.next);
-       
-       root = mergeList( root  , root.next);
-       
-       return root;
+	  if(root==null || root.next==null)
+	   return root;
+	  
+	  root.next=flatten(root.next);
+	  Node ans = merge(root , root.next);
+	  
+	  return ans;
     }
 }
