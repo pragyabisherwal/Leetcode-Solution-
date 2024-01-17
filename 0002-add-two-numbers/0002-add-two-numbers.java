@@ -12,36 +12,41 @@ class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) 
     {
         ListNode result = new ListNode();
-        ListNode temp = result;
-        int carry=0;
+        ListNode curr = result;
         
-        while(l1!=null || l2!=null || carry!=0)
+        int carry = 0;
+        ListNode p = l1;
+        ListNode q = l2;
+        
+        while(p!=null || q!=null || carry!=0)
         {
-            int num1=0 , num2=0;
+            int val1=0;
+            if(p!=null)
+                val1=p.val;
             
-            if(l1!=null)
-              num1 = l1.val;
+            int val2=0;
+            if(q!=null)
+                val2=q.val;
             
-            if(l2!=null)
-              num2 = l2.val;
+            int sum = val1 + val2 + carry;
+            int dig = sum % 10;
+            //System.out.println(dig);
             
-            int sum = num1 + num2 + carry;
+            ListNode temp = new ListNode(dig);
+            curr.next = temp;
+            curr = curr.next;
             
-            int digit = sum%10;
             carry = sum/10;
             
-            ListNode ans = new ListNode(digit);
-            temp.next=ans;
-            
-            if(l1!=null)
-             l1=l1.next;
-            
-            if(l2!=null)
-             l2=l2.next;
-            
-            temp=temp.next;
+            if(p!=null)
+                p=p.next;
+        
+            if(q!=null)
+               q=q.next;
+
         }
         
         return result.next;
+        
     }
 }
