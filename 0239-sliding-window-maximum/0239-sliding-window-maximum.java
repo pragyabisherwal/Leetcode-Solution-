@@ -1,35 +1,36 @@
 class Solution {
-    public int[] maxSlidingWindow(int[] nums, int k)
+    public int[] maxSlidingWindow(int[] nums, int k) 
     {
         int n = nums.length;
-        Deque<Integer> qu = new ArrayDeque<Integer>();
-        int i , j=0;
-        int [] res = new int[n-k+1]; 
+        int [] ans = new int[n-k+1];
+        int i=0 , j=0 , m=0;
         
-        for(i=0 ; i<k ; i++)
+        Deque<Integer> dq = new LinkedList<>();
+        
+        while(j<n)
         {
-          while(!qu.isEmpty() && nums[i]>=nums[qu.peekLast()])  
-              qu.removeLast();
-        
-          qu.addLast(i);
+            while(!dq.isEmpty() && dq.getLast()<nums[j])
+                dq.removeLast();
+            
+            dq.add(nums[j]);
+            
+            if(j-i+1 < k)
+                j++;
+            
+            else if(j-i+1 == k)
+            {
+                ans[m]=dq.getFirst();
+                
+                
+                if(dq.getFirst()==nums[i])
+                    dq.removeFirst();
+                
+                i++;
+                j++;
+                m++;
+            }
         }
         
-        for(; i<n ; i++)
-        {
-           res[j++]= nums[qu.peek()];
-           
-        
-           while(!qu.isEmpty() && qu.peek()<=i-k)  
-              qu.removeFirst();
-            
-            
-            while(!qu.isEmpty() && nums[i]>=nums[qu.peekLast()])  
-              qu.removeLast();
-            
-            qu.addLast(i);
-        }
-        
-        res[j++]= nums[qu.peek()];
-        return res;
+        return ans;
     }
 }
