@@ -11,18 +11,18 @@ class Solution {
             int k=j-i+1;
             
             
-            if(hm.size()>k)
+            if(hm.size()>j-i+1)
                 j++;
             
-            else if(hm.size()==k)
+            else if(hm.size()==j-i+1)
             {
-                max_len = Math.max(max_len ,k);
+                max_len = Math.max(max_len ,j-i+1);
                 j++;
             }
             
-            else if(hm.size()<k)
+            else if(hm.size()<j-i+1)
             {
-                while(hm.size()<k)
+                while(hm.size()<j-i+1)
                 {
                     char ch = s.charAt(i);
                     if(hm.containsKey(ch))
@@ -38,11 +38,10 @@ class Solution {
                      }
                    
                     i++;
-                    k--;
                 }
                 
-                if(hm.size()==k)
-                    max_len = Math.max(max_len ,k);      
+                if(hm.size()==j-i+1)
+                    max_len = Math.max(max_len ,j-i+1);      
                   
                 j++;
             }
