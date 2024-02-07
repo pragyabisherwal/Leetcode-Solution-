@@ -9,9 +9,7 @@ class Solution {
         {
             hm.put(s.charAt(j) , hm.getOrDefault(s.charAt(j) , 0)+1);
             
-            
-            
-             if(hm.size()==j-i+1)
+            if(hm.size()==j-i+1)
             {
                 max_len = Math.max(max_len ,j-i+1);
                 j++;
@@ -37,9 +35,6 @@ class Solution {
                     i++;
                 }
                 
-                if(hm.size()==j-i+1)
-                    max_len = Math.max(max_len ,j-i+1);      
-                  
                 j++;
             }
             
