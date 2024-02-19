@@ -1,5 +1,6 @@
 
 class Solution {
+    
     class Pair implements Comparable<Pair>{
     int first;
     int second;
@@ -9,7 +10,7 @@ class Solution {
         this.first = first;
         this.second = second;
     }
-    @Override
+    
     public int compareTo(Pair other) {
         if (this.first != other.first) {
             return Integer.compare(this.first, other.first);
@@ -17,7 +18,7 @@ class Solution {
             return Integer.compare(this.second, other.second);
         }
     }
-}
+ }
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         PriorityQueue<Pair> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 
