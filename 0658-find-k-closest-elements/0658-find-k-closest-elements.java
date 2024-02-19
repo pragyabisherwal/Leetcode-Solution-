@@ -1,4 +1,6 @@
-class Pair implements Comparable<Pair>{
+
+class Solution {
+    class Pair implements Comparable<Pair>{
     int first;
     int second;
 
@@ -16,7 +18,6 @@ class Pair implements Comparable<Pair>{
         }
     }
 }
-class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         PriorityQueue<Pair> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 
