@@ -1,17 +1,40 @@
+class Pair implements Comparable<Pair>{
+    int first;
+    int second;
+
+    Pair(int first,int second)
+    {
+        this.first = first;
+        this.second = second;
+    }
+    @Override
+    public int compareTo(Pair other) {
+        if (this.first != other.first) {
+            return Integer.compare(this.first, other.first);
+        } else {
+            return Integer.compare(this.second, other.second);
+        }
+    }
+}
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        PriorityQueue<Pair<Integer,Integer>> pq=new PriorityQueue<>((a,b)-> b.getKey()!=a.getKey()?b.getKey()-a.getKey():b.getValue()-a.getValue());
-        for(int i=0;i<arr.length;i++){
-            pq.add(new Pair <>(Math.abs(x-arr[i]),arr[i]));
+        PriorityQueue<Pair> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+        for(int i=0;i<arr.length;i++)
+        {
+            maxHeap.offer(new Pair(Math.abs(x-arr[i]), arr[i]));
+
+            if(maxHeap.size()>k)
+                maxHeap.poll();
         }
-        while(pq.size()>k){
-            pq.remove();
+
+        List<Integer> res = new ArrayList<>();
+         while (!maxHeap.isEmpty()) {
+            res.add(maxHeap.poll().second);
         }
-        LinkedList<Integer> list=new LinkedList<>();
-        while(!pq.isEmpty()){
-            list.addFirst(pq.remove().getValue());
-        }
-        Collections.sort(list);
-        return list;
+
+        Collections.sort(res);
+
+        return res;
     }
 }
