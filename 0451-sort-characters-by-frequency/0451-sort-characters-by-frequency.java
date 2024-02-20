@@ -1,36 +1,30 @@
 class Solution {
+    class Pair{
+        int a, c;
+        public Pair(int a, int c){
+            this.a = a;
+            this.c = c;
+        }
+    }
     public String frequencySort(String s) {
-        char[] arr = s.toCharArray();
-        Arrays.sort(arr);
-        HashMap<Character,Integer> val = new HashMap<>();
-        Set<Character> key = val.keySet();
-        for(int i = 0; i<arr.length; i++){
-            int count = 1;
-            while(i<arr.length-1 && arr[i] == arr[i+1]){
-                count++;
-                i++;
-            }
-            val.put(arr[i],count);
+        int n = s.length();
+        StringBuilder wd = new StringBuilder();
+        HashMap<Character, Integer> hashMap = new HashMap<>();
+        for(int i = 0; i< n; i++){
+            char ch = s.charAt(i);
+            hashMap.put(ch, hashMap.getOrDefault(ch, 0)+1);
         }
-        StringBuilder fin = new StringBuilder();
-        while(fin.length()< s.length()){
-            int maxcount = 0;
-            for(Character k : key){
-                if(maxcount < val.get(k)){
-                    maxcount = val.get(k);
-                }
-            }
-
-            for(Character l : key){
-                if(val.get(l) == maxcount){
-                    for(int i = 1; i<=maxcount; i++){
-                        fin.append(l);
-                    }
-                    val.put(l,0);
-                }
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b) -> b.c-a.c);
+        for(Map.Entry<Character, Integer> e: hashMap.entrySet()){
+            pq.offer(new Pair(e.getKey(), e.getValue()));
+        }
+        while(!pq.isEmpty()){
+            Pair temp = pq.poll();
+            int val = temp.c;
+            while(val--!=0){
+                wd.append((char)temp.a);
             }
         }
-        return fin.toString();
-        
+        return wd.toString();
     }
 }
