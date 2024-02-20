@@ -1,27 +1,36 @@
 class Solution {
     public String frequencySort(String s) {
-        String res = sortByFrequencyHelper(s);
-        return res;
-    }
+        char[] arr = s.toCharArray();
+        Arrays.sort(arr);
+        HashMap<Character,Integer> val = new HashMap<>();
+        Set<Character> key = val.keySet();
+        for(int i = 0; i<arr.length; i++){
+            int count = 1;
+            while(i<arr.length-1 && arr[i] == arr[i+1]){
+                count++;
+                i++;
+            }
+            val.put(arr[i],count);
+        }
+        StringBuilder fin = new StringBuilder();
+        while(fin.length()< s.length()){
+            int maxcount = 0;
+            for(Character k : key){
+                if(maxcount < val.get(k)){
+                    maxcount = val.get(k);
+                }
+            }
 
-    private static String sortByFrequencyHelper(String s) {
-        Map<Character, Integer> freq = new HashMap<>();
-        StringBuilder res = new StringBuilder();
-        PriorityQueue<Character> maxHeap = new PriorityQueue<>(
-                (freq1, freq2) -> freq.get(freq2) - freq.get(freq1)
-        );
-        for (char c: s.toCharArray()){
-            freq.put(c, freq.getOrDefault(c, 0) + 1);
+            for(Character l : key){
+                if(val.get(l) == maxcount){
+                    for(int i = 1; i<=maxcount; i++){
+                        fin.append(l);
+                    }
+                    val.put(l,0);
+                }
+            }
         }
-        for (char key : freq.keySet()){
-            maxHeap.add(key);
-        }
-        while (!maxHeap.isEmpty()){
-            char c = maxHeap.poll();
-            int n = freq.get(c);
-            String temp = new String("" + c).repeat(n);
-            res.append(temp);
-        }
-        return res.toString();
+        return fin.toString();
+        
     }
 }
