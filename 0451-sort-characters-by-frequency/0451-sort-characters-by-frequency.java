@@ -1,30 +1,57 @@
 class Solution {
-    class Pair{
-        int a, c;
-        public Pair(int a, int c){
-            this.a = a;
-            this.c = c;
+    public class Pair implements Comparable<Pair>
+    {
+        char val;
+        int freq;
+        
+        Pair(char val , int freq)
+        {
+            this.val = val;
+            this.freq = freq;
+        }
+        
+        public int compareTo(Pair other)
+        {
+            return this.freq-other.freq;
         }
     }
-    public String frequencySort(String s) {
-        int n = s.length();
-        StringBuilder wd = new StringBuilder();
-        HashMap<Character, Integer> hashMap = new HashMap<>();
-        for(int i = 0; i< n; i++){
+    public String frequencySort(String s) 
+    {
+        HashMap<Character,Integer>hm = new HashMap<>();
+        PriorityQueue<Pair> pq = new PriorityQueue<>(Collections.reverseOrder());
+        
+        for(int i=0 ; i<s.length() ; i++)
+        {
             char ch = s.charAt(i);
-            hashMap.put(ch, hashMap.getOrDefault(ch, 0)+1);
+            hm.put(ch , hm.getOrDefault(ch , 0)+1);
         }
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b) -> b.c-a.c);
-        for(Map.Entry<Character, Integer> e: hashMap.entrySet()){
-            pq.offer(new Pair(e.getKey(), e.getValue()));
+        
+        for(char ch: hm.keySet())
+        {
+            int value = hm.get(ch);
+            
+            Pair temp = new Pair(ch , value);
+            
+            pq.add(temp);
         }
-        while(!pq.isEmpty()){
-            Pair temp = pq.poll();
-            int val = temp.c;
-            while(val--!=0){
-                wd.append((char)temp.a);
-            }
+        
+         StringBuilder ans = new StringBuilder();
+        int k = 0;
+      
+        
+         while (!pq.isEmpty()) 
+         {
+             Pair temp = pq.remove();
+             char first = temp.val;
+             int second = temp.freq;
+             
+             for(int i=0 ; i<second ; i++)
+              {  
+                  ans.append(first);
+              }
+             
         }
-        return wd.toString();
+
+       return ans.toString();
     }
 }
