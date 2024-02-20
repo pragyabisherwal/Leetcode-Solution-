@@ -2,17 +2,17 @@ class Solution {
     public class Pair implements Comparable<Pair>
     {
         int val;
-        int diff;
+        int freq;
         
-        Pair(int val , int diff)
+        Pair(int val , int freq)
         {
             this.val = val;
-            this.diff = diff;
+            this.freq = freq;
         }
         
         public int compareTo(Pair other)
         {
-            return Integer.compare(this.diff, other.diff);
+            return Integer.compare(this.freq, other.freq);
         }
     }
     public int[] topKFrequent(int[] nums, int k) 
@@ -20,14 +20,14 @@ class Solution {
         HashMap<Integer,Integer>hm = new HashMap<>();
         PriorityQueue<Pair> pq = new PriorityQueue<>();
         
-        for(int i : nums)
+        for(int num : nums)
         {
-            hm.put(i , hm.getOrDefault(i , 0)+1);
+            hm.put(num , hm.getOrDefault(num , 0)+1);
         }
         
-        for (int num : hm.keySet())
+        for(int num : hm.keySet())
         {
-            Integer value = hm.get(num);
+            int value = hm.get(num);
             
             Pair temp = new Pair(num , value);
             
