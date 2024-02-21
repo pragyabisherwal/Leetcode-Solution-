@@ -1,16 +1,23 @@
 class Solution {
-    public int[][] kClosest(int[][] points, int K) {
-        if(K == points.length) return points;
+    public int[][] kClosest(int[][] points, int k) {
         
-        //create a PQ witha comparator that puts the greates Euclid distance at the top so that we can remove it when the PQ size exceeds k.
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> (b[0]*b[0] + b[1]*b[1]) - (a[0]*a[0] + a[1]*a[1]));
-            
-       
+        PriorityQueue<int[]> pq = new PriorityQueue<>(
+        (p1, p2) -> getDistance(p1).compareTo(getDistance(p2)));
         
-        for(int[] point: points) {
-            pq.add(point);
-            if(pq.size() > K) pq.poll();
+        for(int i = 0; i < points.length; i++) {
+            pq.add(points[i]);
         }
-        return pq.toArray(new int[0][0]);
+        
+        int[][] result = new int[k][2];
+        
+        for(int i = 0; i < k; i++) {
+            result[i] = pq.poll();    
+        }
+        
+        return result;
+    }
+    
+    private Double getDistance(int[] point) {
+        return Math.sqrt((point[0] * point[0]) + (point[1] * point[1]));
     }
 }
