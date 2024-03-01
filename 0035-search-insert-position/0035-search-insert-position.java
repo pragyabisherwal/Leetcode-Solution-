@@ -6,7 +6,7 @@ class Solution {
         int right = n - 1;
         int mid=0;
         
-        while(left < right)
+        while(left <= right)
         {
             mid = left + (right - left) / 2;
             
@@ -17,7 +17,7 @@ class Solution {
             
             else if(nums[mid] > target)
             {
-                right = mid;
+                right = mid-1;
             } 
             
             else 
@@ -29,6 +29,6 @@ class Solution {
         if (left == n - 1 && nums[n- 1] < target)
         return nums.length;
         
-        return right;
+        return left;
     }
 }
