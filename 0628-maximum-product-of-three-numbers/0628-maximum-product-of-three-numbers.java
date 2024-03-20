@@ -1,56 +1,42 @@
 class Solution {
     public int maximumProduct(int[] nums) {
-       int maxA=Integer.MIN_VALUE;
-        int maxB=Integer.MIN_VALUE;
-        int maxC=Integer.MIN_VALUE;
+       int max1 = Integer.MIN_VALUE;
+        int max2 = Integer.MIN_VALUE;
+        int max3 = Integer.MIN_VALUE;
 
-        // Initialize Minimum and
-        // second minimum element
-        int minA=Integer.MAX_VALUE;
-        int minB=Integer.MAX_VALUE;
-        
-        for(int i=0;i<nums.length;i++)
-        {
-            // Update Maximum, second maximum
-            // and third maximum element
-            if(nums[i]>maxA)
-            {
-                maxC=maxB;
-                maxB=maxA;
-                maxA=nums[i];
+        int min1 = Integer.MAX_VALUE;
+        int min2 = Integer.MAX_VALUE;
+
+        int n = nums.length;
+
+        for(int i=0;i<n;i++){
+            if(nums[i]>max1){
+                max3 = max2;
+                max2 = max1;
+                max1 = nums[i];
             }
 
-            // Update second maximum and
-            // third maximum element
-            else if(nums[i]>maxB)
-            {
-                maxC=maxB;
-                maxB=nums[i];
+            else if(nums[i]>max2){
+                max3 = max2;
+                max2 = nums[i];
             }
 
-            // Update third maximum element
-            else if(nums[i]>maxC)
-            {
-                maxC=nums[i];
-            }
-
-            // Update Minimum and second
-            // minimum element
-            if(nums[i]<minA)
-            {
-                minB=minA;
-                minA=nums[i];
-            }
-
-            // Update second minimum element
-            else if(nums[i]<minB)
-            {
-                minB=nums[i];
+            else if(nums[i]>max3){
+                max3 = nums[i];
             }
         }
-        
-        
-        
-        return Math.max(maxA*maxB*maxC,minA*minB*maxA);
+
+        for(int i=0;i<n;i++){
+            if(nums[i]<min1){
+                min2 = min1;
+                min1 = nums[i];
+            }
+
+            else if(nums[i]<min2){
+                min2 = nums[i];
+            }
+        }
+
+        return Math.max(max1*max2*max3, max1*min1*min2);
     }
 }
