@@ -13,7 +13,6 @@ class Solution {
         
         return add; 
          
-        // reeSum += ( i + mid - 1 ) / mid;
     }
     public int smallestDivisor(int[] nums, int threshold) 
     {
@@ -28,18 +27,9 @@ class Solution {
         while(low<high)
         {
            int mid = low + (high-low)/2;
-            int add=0;
-        
-            for(int num : nums)
-            {
-                add+=num/mid;
-
-                if(num%mid!=0)
-                    add++;
-            }
-           //int divisor = checkDivisor(nums , mid);
+           int divisor = checkDivisor(nums , mid);
             
-            if(add<=threshold)
+            if(divisor<=threshold)
             {
                //Possible answer but we can find the smaller than this divisor
                 high=mid;
