@@ -12,19 +12,14 @@ class Solution {
             }
             
             else
-                flower=0;
-            
-            if(flower==k)
             {
-               bouquet++;
+               bouquet+=flower/k;
                flower=0; 
             }
-            
-            if(bouquet==m)
-                return true;
+         
         }
-        
-        return false;
+        bouquet+=flower/k;
+        return bouquet>=m;
     }
     public int minDays(int[] bloomDay, int m, int k) 
     {
