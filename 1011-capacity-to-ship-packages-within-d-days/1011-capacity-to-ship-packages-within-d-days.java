@@ -6,12 +6,12 @@ class Solution {
         
         for(int num : weights)
         {
-            if(totalW+num>weight)
-            {    totalD++;
-            totalW=num;  }
+            if(totalW+num<=weight)
+                totalW+=num;
             else
             {
-                totalW+=num;        
+                totalD++;
+                totalW=num;        
             }
             
             if(totalD>days)
