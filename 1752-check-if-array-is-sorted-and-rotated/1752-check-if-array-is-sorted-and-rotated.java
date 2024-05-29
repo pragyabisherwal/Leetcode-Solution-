@@ -9,7 +9,8 @@ class Solution {
             int current = nums[i];
             int nextPivoted = nums[(i + 1) % length];
             
-            if (current > nextPivoted) {
+            if (current > nextPivoted) 
+            {
                 irregularities += 1;
                 
                 if (irregularities >= 2) 
