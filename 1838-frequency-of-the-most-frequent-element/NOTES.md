@@ -30,23 +30,3 @@ So, in any case, we either use fewer than k or more than k operations if we take
 So we will increase the elements of array and make it equal to the highest number.As only numbers smaller than it can increase and become equal to it which will hence increase the frequency.
 ​
 **Example**
-​
-**1,4,8,13               k = 5**
-​
-1 , 4 , 8 , <-13  (13 will ask number to its left to become equal to it)
-​
-1 , 4 , <- 8 , 13  (8 will ask number to its left to become equal to it)
-​
-1 , <-4 ,  8 , 13  (4 will ask number to its left to become equal to it)
-​
-https://www.youtube.com/watch?v=iOqH_JnXIOQ&ab_channel=codestorywithMIK
-​
-​
-Binary search solution
-Sliding Window Solution
-​
-​
-​
-​
-​
-​
