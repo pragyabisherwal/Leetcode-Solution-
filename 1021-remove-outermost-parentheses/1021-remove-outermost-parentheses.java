@@ -1,5 +1,5 @@
 class Solution {
-    
+    /////1ST APPROACH
     public int check(int i , String s)
     {
         Stack<Character> st = new Stack<>();
@@ -21,24 +21,45 @@ class Solution {
         
         return i-1;
     }
+//     public String removeOuterParentheses(String s) 
+//     {
+//         int i=0 , len=0;
+        
+//         String ans="";
+//         //System.out.println(s.length());
+//         while(len<s.length())
+//         {  
+//            if(i>=s.length())
+//                break;
+            
+//            len =check(i , s);
+//            String sub = s.substring(i+1 , len); 
+            
+//            ans +=sub;
+//            //System.out.println(ans);
+//            i = len+1;
+//            //System.out.println(i);
+//         }
+        
+//         return ans;
+//     }
+    
+    /////// 2ND APPROACH
     public String removeOuterParentheses(String s) 
     {
-        int i=0 , len=0;
+        int counter = 0;
+        String ans = "";
         
-        String ans="";
-        //System.out.println(s.length());
-        while(len<s.length())
-        {  
-           if(i>=s.length())
-               break;
+        for(int i=0 ; i<s.length() ; i++)
+        {
+          if(s.charAt(i)==')')
+           counter--;
             
-           len =check(i , s);
-           String sub = s.substring(i+1 , len); 
+          if(counter!=0)
+            ans+=s.charAt(i);
             
-           ans +=sub;
-           //System.out.println(ans);
-           i = len+1;
-           //System.out.println(i);
+          if(s.charAt(i)=='(')
+              counter++;   
         }
         
         return ans;
