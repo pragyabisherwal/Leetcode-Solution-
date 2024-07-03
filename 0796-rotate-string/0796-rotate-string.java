@@ -1,3 +1,15 @@
+/*ONE LINER SOLUTION
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        if(s.length()!=goal.length())return false;
+        String temp = goal+goal;
+        if(temp.contains(s))return true;
+        return false;
+    }
+}
+*/
+
+
 class Solution {
     public boolean rotateString(String s, String goal) {
         if(s.equals(goal)==true)return true;
