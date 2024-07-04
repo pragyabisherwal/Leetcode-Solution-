@@ -15,6 +15,7 @@ class Solution {
             return this.freq-other.freq;
         }
     }
+    
     public String frequencySort(String s) 
     {
         HashMap<Character,Integer>hm = new HashMap<>();
@@ -35,7 +36,7 @@ class Solution {
             pq.add(temp);
         }
         
-         StringBuilder ans = new StringBuilder();
+        StringBuilder ans = new StringBuilder();
         int k = 0;
       
         
